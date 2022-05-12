@@ -1,0 +1,40 @@
+<section>
+  <header>
+    <h2>⚙️ Admin</h2>
+  </header>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Views</th>
+        <th>Draft?</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Title 1</td>
+        <td>100</td>
+        <td>
+          <!-- 
+            Look up how to use React's `defaultChecked` attribute 
+            to control the initial status of this checkbox: 
+          -->
+          <input name="private" type="checkbox" checked />
+        </td>
+        <td>❌</td>
+      </tr>
+      <tr>
+        <td>Title 2</td>
+        <td>32</td>
+        <td>
+          <input name="private" type="checkbox" checked />
+        </td>
+        <td>❌</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- If there are no posts, show this placeholder text: -->
+  <div>No posts yet. Try making a new one!</div>
+</section>
