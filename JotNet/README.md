@@ -41,10 +41,9 @@ In its most complete form, the app should allow you to view a list of published 
 
 
 
-- [ ] Navigate to the cloned assessment directory (the folder this file is in!) in your terminal and `git remote rm origin` to prevent yourself from accidentally pushing code during the assessment.
 - [ ] Navigate to the prompt directory and install the project’s dependencies.
 - [ ] Create a copy of the `📄 example.env` file and call it `.env`, if such a file doesn't exist. The values in the new file will populate your environment variables, and database credentials in particular.
-- [ ] Ensure that the MySQL server is running on your computer (e.g. with `mysql.server start`)
+- [ ] Ensure that the MySQL server is running on your computer (e.g. with `mysql.server start` or `brew services start mysql`)
 - [ ] Quickly scan the requirements below and study the provided codebase to assess what's been provided to you, what you will need to refactor, and what you might need to create to complete the app.
 - [ ] When ready, in two separate terminals, run the `server-dev` and `client-dev` scripts.
   - Don't be alarmed if you are greeted with errors! We are going to fix things in Phase 1. 🧘
