@@ -5,8 +5,7 @@ Ready to put your skills to the test and have some full-stack hacking fun? This 
 ## Before Starting
 
 1. Confirm that all communication applications and tools are turned off, closed, put away
-1. Fork this repo and clone it. Do not push your work any time during this assessment.
-1. (If Applicable) Follow [these instructions](./RECORDING.md) to start recording your screen.
+1. Fork this repo and clone it.
 
 ## Guidelines
 
@@ -26,15 +25,9 @@ The ultimate goal of this assessment is to give you an opportunity to demonstrat
 
 ## Submitting Your Work
 
-Your work will be submitted with the `submit.sh` script located in the root directory of this repo. At 3:30 (or beforehand if you finish early):
-
 1. Make a final commit
-1. (If Applicable) Stop recording your screen and save your video file locally as `firstname-lastname-yyyymmdd`  
-    - NOTE: While the video is saving, proceed with the next steps.
 1. Fill out the "How to start this app" section in the problem's `README.md` file if it's not done already
 1. Fill out the `closing_comments.txt` file.
 1. Commit the changes to `closing_comments.txt` and `README.md`.  
     - NOTE: This commit should only contain changes to these two files - no other changes are allowed
-1. Run the script `bash submit.sh` to submit your code.  
-    - NOTE: You don't have to wait for your video to stop saving before running this script.
-1. (If Applicable) Follow your staff's instructions on how to upload your screen recording
+1. Push your changes to your fork of this repo on GitHub.
