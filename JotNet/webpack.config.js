@@ -3,7 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-// const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -32,15 +32,15 @@ module.exports = {
       },
     ],
   },
-  // devServer: {
-  //   index: "",
-  //   proxy: {
-  //     context: () => true,
-  //     target: "http://localhost:3000",
-  //   },
-  // },
+  devServer: {
+    index: "",
+    proxy: {
+      context: () => true,
+      target: "http://localhost:3000",
+    },
+  },
   plugins: [
-    // new ReactRefreshPlugin(), // See note below...
+    new ReactRefreshPlugin(), // See note below...
     new HtmlWebpackPlugin({
       title: "JotNet",
       favicon: "./client/src/assets/favicon.png",
