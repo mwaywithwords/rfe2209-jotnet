@@ -1,3 +1,8 @@
- 
+
 // TODO: Implement this middleware function
-module.exports = () => {}
+module.exports = (req, res, next) => {
+  console.log(
+    `${req.method}, ${req.url}`
+  );
+  next();
+};

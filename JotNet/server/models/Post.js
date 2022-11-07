@@ -4,14 +4,17 @@ exports.createOne = ({ title, content, summary, status, image_id }) => {
   var sql = 'INSERT INTO posts (title, content, summary, status, image) VALUES (?,?,?,?,?)';
 
 
-  return db.queryAsync(sql, [title, content, summary, status, image_id], ( err, data
-  ) => {
-    if (err) {
-      console.log('some error happened', err);
-    } else {
-      console.log('sucessfully inserted into db', data);
-    }
+  return new Promise((resolve, reject)=>{
+    db.queryAsync(sql, [title, content, summary, status, image_id], ( err, data
+    ) => {
+      if (err) {
+        return reject('some error happened', err);
+      }
+      return resolve(data);
+    });
   });
+
+
   // TODO: Implement this method.
   // Update the function's arguments if you'd like to switch
   // to a callback-based implementation.
@@ -19,6 +22,17 @@ exports.createOne = ({ title, content, summary, status, image_id }) => {
 };
 
 exports.findAll = () => {
+
+  return new Promise((resolve, reject)=>{
+    db.queryAsync('SELECT * FROM posts ORDER BY id DESC', (err, data)=>{
+      if (err) {
+        reject(err, 'from find all method in Post');
+      } else {
+        resolve(data);
+      }
+    });
+  });
+
 
   // TODO: Implement this method.
   // Update the function's arguments if you'd like to switch
