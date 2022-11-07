@@ -1,18 +1,42 @@
-import React from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from "../components/Card.jsx"
 
 
-export default class List extends React.Component {
- 
-  render() {
-    return (
-      <section>
-        <header>
-          <h2>📚 All Posts</h2>
-        </header>
-        Render posts as Card components here...
-        <div id="placeholder-div">No posts yet. Try making a new one...?</div>
-      </section>
-    );
-  }
-}
+const List = ()=>{
+  const [posts, setPosts] = useState([]);
+  console.log(posts);
+
+  const post = () => {
+    if (posts.length === 0) {
+      return 'No posts yet. Try making a new one...?';
+    }
+  };
+
+
+  const getPosts = () => {
+    axios.get('/getPosts').then((response)=>{
+      setPosts(response.data);
+    }).catch((err)=>{
+      console.log(err);
+    });
+  };
+
+  useEffect(()=>{
+    getPosts();
+  }, []);
+
+
+  return (
+    <section>
+      <header>
+        <h2>📚 All Posts</h2>
+      </header>
+      <Card posts={posts}/>
+      <div id="placeholder-div">{post()}</div>
+    </section>
+  );
+
+};
+
+export default List;
