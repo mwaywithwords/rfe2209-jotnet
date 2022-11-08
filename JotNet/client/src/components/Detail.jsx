@@ -33,7 +33,7 @@ const Detail = ({id})=>{
           alt="header image"
         />
         <small>{formatDistanceToNow(new Date(onePost.updated_at))}</small>
-        <p>{onePost.summary}</p>
+        <p>{onePost.content}</p>
 
       </article>
       ))}

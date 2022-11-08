@@ -1,18 +1,20 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import parseContent from "../lib/parseContent.js"
 
 const Form = ()=> {
 
   const [info, setInfo] = useState({
     title: '',
     image_id: '',
-    content: '',
     status: 'public',
-    summary: ""
+    content: parseContent.content,
+    summary: parseContent.summary
   });
   const [checked, setChecked] = useState(false)
 
-  console.log(info)
+
+  console.log(info.content)
 
   const isChecked = () =>{
 
@@ -30,8 +32,6 @@ const Form = ()=> {
 
 
 
-
-  // const dataObj = {info.title, info.image_id, info.content, info.status};
 
   const sendPost = () =>{
     // const headers = {"content-type": "application?json; charset=utf-8"}
@@ -93,7 +93,7 @@ const Form = ()=> {
             autocomplete="off"
             value={info.content}
             onChange={(e)=>{
-              setInfo({...info, content: e.target.value});
+              parseContent(e.target.value);
             }}
           />
         </label>
@@ -102,11 +102,14 @@ const Form = ()=> {
           <textarea
             cols="24"
             rows="4"
-            name=""
+            name="summary"
             placeholder="put your summary here "
             required
             autocomplete="off"
-
+            value={info.summary}
+            onChange={(e)=>{
+              parseContent(e.target.value);
+            }}
 
           />
         </label>

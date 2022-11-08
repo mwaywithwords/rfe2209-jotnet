@@ -8,7 +8,7 @@ export default function Card({id, setID, posts, onClick }) {
   return (<ul>
     {posts.map((post) =>(
       <aside onClick={(e)=>{
-        onClick(post.ID)
+        onClick(post.ID);
       }} >
         <img
           src={`https://source.unsplash.com/${post.image}/384x192`}
