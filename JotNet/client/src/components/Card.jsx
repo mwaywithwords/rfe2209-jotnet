@@ -1,13 +1,15 @@
 import React from 'react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 
-export default function Card({ posts, onClick }) {
+export default function Card({id, setID, posts, onClick }) {
+  console.log(posts);
 
   // See examples/Card.html for what this component should render.
   return (<ul>
     {posts.map((post) =>(
-
-      <aside>
+      <aside onClick={(e)=>{
+        onClick(post.ID)
+      }} >
         <img
           src={`https://source.unsplash.com/${post.image}/384x192`}
           width="384"
@@ -19,6 +21,7 @@ export default function Card({ posts, onClick }) {
         <p>{post.summary}</p>
       </aside>
     ))}
+
   </ul>);
 
 }

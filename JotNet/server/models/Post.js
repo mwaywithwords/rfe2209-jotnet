@@ -42,6 +42,18 @@ exports.findAll = () => {
 
 exports.findByID = (id) => {
 
+  return new Promise((resolve, reject)=>{
+    db.queryAsync(`SELECT * FROM posts WHERE ID= ${id}`, (err, data)=>{
+      if (err) {
+        reject(err, 'from findby ID method in Post');
+      } else {
+        resolve(data);
+      }
+    });
+  });
+
+
+
   // TODO: Implement this method.
   // Update the function's arguments if you'd like to switch
   // to a callback-based implementation.

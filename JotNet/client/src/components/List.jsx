@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from "../components/Card.jsx"
+import Card from '../components/Card.jsx';
 
 
-const List = ()=>{
+const List = ({showPostOnClick})=>{
   const [posts, setPosts] = useState([]);
-  console.log(posts);
+  const [id, setId] = useState('');
+
+
+
+  const onClick = (propsId)=>{
+    let prop = {id: propsId};
+    return showPostOnClick(prop);
+  };
 
   const post = () => {
     if (posts.length === 0) {
@@ -15,6 +22,10 @@ const List = ()=>{
 
 
   const getPosts = () => {
+
+
+
+
     axios.get('/getPosts').then((response)=>{
       setPosts(response.data);
     }).catch((err)=>{
@@ -32,8 +43,9 @@ const List = ()=>{
       <header>
         <h2>📚 All Posts</h2>
       </header>
-      <Card posts={posts}/>
-      <div id="placeholder-div">{post()}</div>
+      <Card posts={posts} onClick={onClick} id ={id} setID={setId}/>
+      <div
+      >{post()} </div>
     </section>
   );
 

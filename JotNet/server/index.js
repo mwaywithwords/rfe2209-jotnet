@@ -14,13 +14,16 @@ const app = express();
 // TODO: Add app-wide middleware
 app.use(express.json());
 app.use(express.urlencoded());
-app.use(logger)
+app.use(logger);
 
 // TODO: Set up static service of assets
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // TODO: Define routes
 app.get('/getPosts', postCtrl.getPosts);
+app.get ("/getPosts/:id", postCtrl.findByID);
+app.post('/addPost', postCtrl.addPost);
+
 
 const PORT = process.env.PORT || 3000;
 
