@@ -2,9 +2,9 @@ import React from 'react';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 
 export default function Card({id, setID, posts, onClick }) {
-  console.log(posts);
 
-  // See examples/Card.html for what this component should render.
+
+
   return (<ul>
     {posts.map((post) =>(
       <aside onClick={(e)=>{

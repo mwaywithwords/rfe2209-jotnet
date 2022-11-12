@@ -1,5 +1,5 @@
 // Make sure to run this file from the prompt (JotNet) directory
-// and not a sub-drectory. 
+// and not a sub-drectory.
 
 const Post = require("./models/Post.js");
 const postsData = require("../examples/postsData.json");

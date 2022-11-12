@@ -1,25 +1,20 @@
 export default function parseContent(contentStr) {
+
   const result = {
-    content: "",
-    summary: "",
+    content: contentStr,
+    summary: contentStr ,
   };
 
-result.content = contentStr
-result.summary = contentStr
-
-var split = result.summary.split('')
-
-  let last = split[split.length -1]
 
 
-  // TODO: Implement the parser module
-  for(let i = 0; i < result.summary.length; i++){
-    console.log(result.summary)
-    if(result.summary[i] === last){
+var last = result.content[result.content.length -1]
+
+  var max_chars = 256
+  if( result.summary.length > max_chars) {
+    result.summary = result.summary.substr(0, max_chars);
     }
-  }
 
-console.log(result.summary)
+   result.summary += "..."
 
   return result;
 }

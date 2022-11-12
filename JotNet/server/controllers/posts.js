@@ -1,4 +1,5 @@
 const Post = require('../models/Post.js');
+require('dotenv').config();
 
 exports.getPosts = (req, res) => {
   Post.findAll().then((response)=>{
@@ -6,9 +7,6 @@ exports.getPosts = (req, res) => {
   }).catch((err)=>{
     console.log(err);
   });
-
-  // TODO: Implement this route handler
-  // res.sendStatus(501);
 };
 
 exports.findByID = (req, res) => {
@@ -18,10 +16,6 @@ exports.findByID = (req, res) => {
   }).catch((err)=>{
     console.log(err);
   });
-
-
-  // TODO: Implement this route handler
-  // res.sendStatus(501);
 };
 
 exports.addPost = (req, res) => {
@@ -31,22 +25,24 @@ exports.addPost = (req, res) => {
   const status = req.body.status;
   const image_id = req.body.image_id;
 
-
   Post.createOne({title, content, summary, status, image_id});
   res.sendStatus(201);
-
-  // TODO: Implement this route handler
-  // res.sendStatus(501);
 };
 
 exports.togglePostStatus = (req, res) => {
-
-  // TODO: Implement this route handler
-  // res.sendStatus(501);
+  const id = req.body.id;
+  const status = req.body.id;
+  toggleStatusByID(id, status);
+  req.sendStatus(201);
 };
 
 exports.deletePost = (req, res) => {
+  const auth = req.headers.authorization;
+  const id = req.body.id;
 
-  // TODO: Implement this route handler
-  // res.sendStatus(501);
+  if (auth === process.env.AUTH_SECRET) {
+    Post.deleteByID(id); res.sendStatus(204);
+  } else {
+    res.sendStatus(401);
+  }
 };

@@ -1,24 +1,17 @@
 const db = require('../db.js');
 
 exports.createOne = ({ title, content, summary, status, image_id }) => {
+
   var sql = 'INSERT INTO posts (title, content, summary, status, image) VALUES (?,?,?,?,?)';
-
-
   return new Promise((resolve, reject)=>{
     db.queryAsync(sql, [title, content, summary, status, image_id], ( err, data
     ) => {
       if (err) {
-        return reject('some error happened', err);
+        return reject('error in createOne', err);
       }
       return resolve(data);
     });
   });
-
-
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
 };
 
 exports.findAll = () => {
@@ -32,12 +25,6 @@ exports.findAll = () => {
       }
     });
   });
-
-
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
 };
 
 exports.findByID = (id) => {
@@ -51,37 +38,36 @@ exports.findByID = (id) => {
       }
     });
   });
-
-
-
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
 };
 
-exports.incrementViewByID = (id) => {
+exports.incrementViewByID = (id, views) => {
 
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
+  return new Promise((resolve, reject)=>{
+    db.queryAsync(`UPDATE posts SET views = ${views}  WHERE ID= ${id}`, (err, data)=>{
+      if (err) {
+        reject(err, 'from findby ID method in Post');
+      } else {
+        resolve(data);
+      }
+    });
+  });
 };
 
-exports.toggleStatusByID = (id) => {
-
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
+exports.toggleStatusByID = (id, status) => {
+  return new Promise((resolve, reject)=>{
+    db.queryAsync(`UPDATE posts SET status = ${status}  WHERE ID= ${id}`, (err, data)=>{
+      if (err) {
+        reject(err, 'from toggleStatusByID method in Post');
+      } else {
+        resolve(data);
+      }
+    });
+  });
 };
 
 exports.deleteByID = (id) => {
 
-  // TODO: Implement this method.
-  // Update the function's arguments if you'd like to switch
-  // to a callback-based implementation.
-  // throw Error("Method not implemented")
+  return db.queryAsync(`DELETE from posts where ID = ${id}`).catch((err) => console.log(err));
 };
 
 exports.deleteAll = () => {

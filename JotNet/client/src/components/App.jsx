@@ -42,7 +42,7 @@ export default function App() {
       case "All Posts":
         return <List showPostOnClick={changeView("Post")} />;
       case "Post":
-        return <Detail id={view.viewProps.id} />;
+        return <Detail id={view.viewProps.id}  />;
       case "New Post":
         return <Form onSubmit={changeView("All Posts")} />;
       case "Admin":
@@ -64,7 +64,7 @@ export default function App() {
             <li onClick={changeView("New Post")}>✏️ New Post</li>
 
             {/* TODO: Enable this when working on the Admin view:*/}
-            {/* <li onClick={changeView("Admin")}>⚙️ Admin</li> */}
+            <li onClick={changeView("Admin")}>⚙️ Admin</li>
           </ul>
         </nav>
       </header>

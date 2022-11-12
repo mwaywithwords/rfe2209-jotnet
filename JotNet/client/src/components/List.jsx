@@ -6,7 +6,7 @@ import Card from '../components/Card.jsx';
 const List = ({showPostOnClick})=>{
   const [posts, setPosts] = useState([]);
   const [id, setId] = useState('');
-
+  console.log(posts);
 
 
   const onClick = (propsId)=>{
@@ -22,9 +22,6 @@ const List = ({showPostOnClick})=>{
 
 
   const getPosts = () => {
-
-
-
 
     axios.get('/getPosts').then((response)=>{
       setPosts(response.data);

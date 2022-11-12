@@ -1,6 +1,4 @@
-// This module adds environment variables to
-// process.env, based on values in ../.env.
-// See that file for configurable values.
+
 require('dotenv').config();
 
 const express = require('express');
@@ -21,9 +19,10 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // TODO: Define routes
 app.get('/getPosts', postCtrl.getPosts);
-app.get ("/getPosts/:id", postCtrl.findByID);
+app.get ('/getPosts/:id', postCtrl.findByID);
 app.post('/addPost', postCtrl.addPost);
-
+app.delete('/deletePost', postCtrl.deletePost);
+app.patch('newStatus/', postCtrl.togglePostStatus);
 
 const PORT = process.env.PORT || 3000;
 

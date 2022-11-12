@@ -8,18 +8,13 @@ const Form = ()=> {
     title: '',
     image_id: '',
     status: 'public',
-    content: parseContent.content,
-    summary: parseContent.summary
+    content: "",
+    summary: ""
   });
   const [checked, setChecked] = useState(false)
 
 
-  console.log(info.content)
-
   const isChecked = () =>{
-
-
-
     if(checked === false){
       setChecked(true)
       setInfo({...info, status: 'draft'});
@@ -30,12 +25,7 @@ const Form = ()=> {
   }
 
 
-
-
-
   const sendPost = () =>{
-    // const headers = {"content-type": "application?json; charset=utf-8"}
-
     axios.post('/addPost',{info})
       .then((response) => {
         console.log(response);
@@ -59,7 +49,7 @@ const Form = ()=> {
             name="title"
             placeholder="My brand new post..."
             required
-            autocomplete="off"
+            autoComplete="off"
             value={info.title}
             onChange={(e)=>{
               setInfo({...info, title: e.target.value});
@@ -74,7 +64,7 @@ const Form = ()=> {
             name="image_id"
             placeholder="RSQadxSSW_Y"
             required
-            autocomplete="off"
+            autoComplete="off"
             value={info.image_id}
             onChange={(e)=>{
               setInfo({...info, image_id: e.target.value});
@@ -90,10 +80,9 @@ const Form = ()=> {
             name="content"
             placeholder="Lorem ipsum dolor sit amet..."
             required
-            autocomplete="off"
-            value={info.content}
+            autoComplete="off"
             onChange={(e)=>{
-              parseContent(e.target.value);
+              setInfo({...info, content: parseContent(e.target.value).content})
             }}
           />
         </label>
@@ -102,13 +91,13 @@ const Form = ()=> {
           <textarea
             cols="24"
             rows="4"
+            maxLength="256"
             name="summary"
             placeholder="put your summary here "
             required
-            autocomplete="off"
-            value={info.summary}
+            autoComplete="off"
             onChange={(e)=>{
-              parseContent(e.target.value);
+              setInfo({...info, summary: parseContent(e.target.value).summary})
             }}
 
           />

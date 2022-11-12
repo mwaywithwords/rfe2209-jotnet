@@ -21,7 +21,7 @@ const Detail = ({id})=>{
   }, []);
 
 
-  // See examples/Detail.html for what this component should render.
+
   return (
     <ul>
       {singlePost.map((onePost) =>(<article>
